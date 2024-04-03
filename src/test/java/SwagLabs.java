@@ -514,9 +514,292 @@ public class SwagLabs {
         Assert.assertEquals(isItTheSame.getText(), jacket);
     }
 
+    @Test
+    public void TS2SwagLabsTC3() {
+        String jacketAddToCart = "Remove";
+        ChromeDriver driver = new ChromeDriver();
+        driver.get("https://www.saucedemo.com/");
+        driver.findElement(By.id("user-name")).sendKeys("problem_user");
+        driver.findElement(By.id("password")).sendKeys("secret_sauce");
+        driver.findElement(By.id("login-button")).click();
+        try {
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
+        driver.findElement(By.xpath("/html/body/div/div/div/div[2]/div/div/div/div[4]/div[2]/div[2]/button")).click();
+        WebElement isItTheSame = driver.findElement(By.xpath("/html/body/div/div/div/div[2]/div/div/div/div[4]/div[2]/div[2]/button"));
+        Assert.assertEquals(isItTheSame.getText(), jacketAddToCart);
+    }
 
+    @Test
+    public void TS2SwagLabsTC4() {
+        String cart = "Your Cart";
+        ChromeDriver driver = new ChromeDriver();
+        driver.get("https://www.saucedemo.com/");
+        driver.findElement(By.id("user-name")).sendKeys("problem_user");
+        driver.findElement(By.id("password")).sendKeys("secret_sauce");
+        driver.findElement(By.id("login-button")).click();
+        try {
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
+        driver.findElement(By.xpath("/html/body/div/div/div/div[2]/div/div/div/div[4]/div[2]/div[1]/a/div")).click();
+        driver.findElement(By.xpath("/html/body/div/div/div/div[2]/div/div/div[2]/button")).click();
+        WebElement cartButton = driver.findElement(By.xpath("/html/body/div/div/div/div[1]/div[1]/div[3]"));
+        cartButton.click();
+        WebElement inTheCart = driver.findElement(By.xpath("/html/body/div/div/div/div[1]/div[2]/span"));
+        Assert.assertEquals(inTheCart.getText(), cart);
+    }
+
+    @Test
+    public void TS2SwagLabsTC5() {
+        ChromeDriver driver = new ChromeDriver();
+        driver.get("https://www.saucedemo.com/");
+        driver.findElement(By.id("user-name")).sendKeys("problem_user");
+        driver.findElement(By.id("password")).sendKeys("secret_sauce");
+        driver.findElement(By.id("login-button")).click();
+        try {
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        driver.findElement(By.id("add-to-cart-sauce-labs-backpack")).click();
+        String backpack = "Sauce Labs Backpack";
+        String backpackPrice = "$29.99";
+        driver.findElement(By.id("add-to-cart-sauce-labs-bike-light")).click();
+        String bikeLight = "Sauce Labs Bike Light";
+        String bikeLightPrice = "$9.99";
+        driver.findElement(By.id("add-to-cart-sauce-labs-bolt-t-shirt")).click();
+        String boltShirt = "Sauce Labs Bolt T-Shirt";
+        String boltShirtPrice = "$15.99";
+        driver.findElement(By.id("add-to-cart-sauce-labs-fleece-jacket")).click();
+        String jacket = "Sauce Labs Fleece Jacket";
+        String jacketPrice = "$49.99";
+        driver.findElement(By.id("add-to-cart-sauce-labs-onesie")).click();
+        String onesie = "Sauce Labs Onesie";
+        String onesiePrice = "$7.99";
+        driver.findElement(By.id("add-to-cart-test.allthethings()-t-shirt-(red)")).click();
+        String redShirt = "Test.allTheThings() T-Shirt (Red)";
+        String redShirtPrice = "$15.99";
+
+        WebElement cartButton = driver.findElement(By.xpath("/html/body/div/div/div/div[1]/div[1]/div[3]"));
+        cartButton.click();
+
+        try {
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        WebElement cartItem1 = driver.findElement(By.xpath("/html/body/div/div/div/div[2]/div/div[1]/div[3]/div[2]/a/div"));
+        Assert.assertEquals(cartItem1.getText(), backpack);
+        WebElement cartItem1Price = driver.findElement(By.xpath("/html/body/div/div/div/div[2]/div/div[1]/div[3]/div[2]/div[2]/div"));
+        Assert.assertEquals(cartItem1Price.getText(), backpackPrice);
+
+        WebElement cartItem2 = driver.findElement(By.xpath("/html/body/div/div/div/div[2]/div/div[1]/div[4]/div[2]/a/div"));
+        Assert.assertEquals(cartItem2.getText(), bikeLight);
+        WebElement cartItem2Price = driver.findElement(By.xpath("/html/body/div/div/div/div[2]/div/div[1]/div[4]/div[2]/div[2]/div"));
+        Assert.assertEquals(cartItem2Price.getText(), bikeLightPrice);
+
+        WebElement cartItem3 = driver.findElement(By.xpath("/html/body/div/div/div/div[2]/div/div[1]/div[5]/div[2]/a/div"));
+        Assert.assertEquals(cartItem3.getText(), boltShirt);
+        WebElement cartItem3Price = driver.findElement(By.xpath("/html/body/div/div/div/div[2]/div/div[1]/div[5]/div[2]/div[2]/div"));
+        Assert.assertEquals(cartItem3Price.getText(), boltShirtPrice);
+
+        WebElement cartItem4 = driver.findElement(By.xpath("/html/body/div/div/div/div[2]/div/div[1]/div[6]/div[2]/a/div"));
+        Assert.assertEquals(cartItem4.getText(), jacket);
+        WebElement cartItem4Price = driver.findElement(By.xpath("/html/body/div/div/div/div[2]/div/div[1]/div[6]/div[2]/div[2]/div"));
+        Assert.assertEquals(cartItem4Price.getText(), jacketPrice);
+
+        WebElement cartItem5 = driver.findElement(By.xpath("/html/body/div/div/div/div[2]/div/div[1]/div[7]/div[2]/a/div"));
+        Assert.assertEquals(cartItem5.getText(), onesie);
+        WebElement cartItem5Price = driver.findElement(By.xpath("/html/body/div/div/div/div[2]/div/div[1]/div[7]/div[2]/div[2]/div"));
+        Assert.assertEquals(cartItem5Price.getText(), onesiePrice);
+
+        WebElement cartItem6 = driver.findElement(By.xpath("/html/body/div/div/div/div[2]/div/div[1]/div[8]/div[2]/a/div"));
+        Assert.assertEquals(cartItem6.getText(), redShirt);
+        WebElement cartItem6Price = driver.findElement(By.xpath("/html/body/div/div/div/div[2]/div/div[1]/div[8]/div[2]/div[2]/div"));
+        Assert.assertEquals(cartItem6Price.getText(), redShirtPrice);
+    }
+
+    @Test
+    public void TS2SwagLabsTC6() {
+        String cart = "Your Cart";
+        ChromeDriver driver = new ChromeDriver();
+        driver.get("https://www.saucedemo.com/");
+        driver.findElement(By.id("user-name")).sendKeys("problem_user");
+        driver.findElement(By.id("password")).sendKeys("secret_sauce");
+        driver.findElement(By.id("login-button")).click();
+        try {
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        WebElement cartButton = driver.findElement(By.xpath("/html/body/div/div/div/div[1]/div[1]/div[3]"));
+        cartButton.click();
+        WebElement inTheCart = driver.findElement(By.xpath("/html/body/div/div/div/div[1]/div[2]/span"));
+        Assert.assertEquals(inTheCart.getText(), cart);
+    }
+
+    @Test
+    public void TS2SwagLabsTC7() {
+        String nameOnly = "Error: Last Name is required";
+        ChromeDriver driver = new ChromeDriver();
+        driver.get("https://www.saucedemo.com/");
+        driver.findElement(By.id("user-name")).sendKeys("problem_user");
+        driver.findElement(By.id("password")).sendKeys("secret_sauce");
+        driver.findElement(By.id("login-button")).click();
+        try {
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        WebElement cartButton = driver.findElement(By.xpath("/html/body/div/div/div/div[1]/div[1]/div[3]"));
+        cartButton.click();
+        driver.findElement(By.id("checkout")).click();
+        driver.findElement(By.id("first-name")).sendKeys("Maja");
+        driver.findElement(By.id("continue")).click();
+        WebElement checkoutText = driver.findElement(By.xpath("/html/body/div/div/div/div[2]/div/form/div[1]/div[4]/h3"));
+        Assert.assertEquals(checkoutText.getText(),nameOnly);
+    }
+
+    @Test
+    public void TS2SwagLabsTC8() {
+        String surnameOnly = "Error: First Name is required";
+        ChromeDriver driver = new ChromeDriver();
+        driver.get("https://www.saucedemo.com/");
+        driver.findElement(By.id("user-name")).sendKeys("problem_user");
+        driver.findElement(By.id("password")).sendKeys("secret_sauce");
+        driver.findElement(By.id("login-button")).click();
+        try {
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        WebElement cartButton = driver.findElement(By.xpath("/html/body/div/div/div/div[1]/div[1]/div[3]"));
+        cartButton.click();
+        driver.findElement(By.id("checkout")).click();
+        driver.findElement(By.id("last-name")).sendKeys("Maja Maja");
+        driver.findElement(By.id("continue")).click();
+        WebElement checkoutText = driver.findElement(By.xpath("/html/body/div/div/div/div[2]/div/form/div[1]/div[4]/h3"));
+        Assert.assertEquals(checkoutText.getText(),surnameOnly);
+    }
+
+    @Test
+    public void TS2SwagLabsTC9() {
+        String postCodeOnly = "Error: First Name is required";
+        ChromeDriver driver = new ChromeDriver();
+        driver.get("https://www.saucedemo.com/");
+        driver.findElement(By.id("user-name")).sendKeys("problem_user");
+        driver.findElement(By.id("password")).sendKeys("secret_sauce");
+        driver.findElement(By.id("login-button")).click();
+        try {
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        WebElement cartButton = driver.findElement(By.xpath("/html/body/div/div/div/div[1]/div[1]/div[3]"));
+        cartButton.click();
+        driver.findElement(By.id("checkout")).click();
+        driver.findElement(By.id("postal-code")).sendKeys("12345");
+        driver.findElement(By.id("continue")).click();
+        WebElement checkoutText = driver.findElement(By.xpath("/html/body/div/div/div/div[2]/div/form/div[1]/div[4]/h3"));
+        Assert.assertEquals(checkoutText.getText(),postCodeOnly);
+    }
+
+    @Test
+    public void TS2SwagLabsTC10() {
+        ChromeDriver driver = new ChromeDriver();
+        driver.get("https://www.saucedemo.com/");
+        driver.findElement(By.id("user-name")).sendKeys("problem_user");
+        driver.findElement(By.id("password")).sendKeys("secret_sauce");
+        driver.findElement(By.id("login-button")).click();
+        try {
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        driver.findElement(By.xpath("")).click();
+    }
+
+    @Test
+    public void TS2SwagLabsTC11() {
+        ChromeDriver driver = new ChromeDriver();
+        driver.get("https://www.saucedemo.com/");
+        driver.findElement(By.id("user-name")).sendKeys("problem_user");
+        driver.findElement(By.id("password")).sendKeys("secret_sauce");
+        driver.findElement(By.id("login-button")).click();
+        try {
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        driver.findElement(By.id("react-burger-menu-btn")).click();
+    }
+
+    @Test
+    public void TS2SwagLabsTC12() {
+        ChromeDriver driver = new ChromeDriver();
+        driver.get("https://www.saucedemo.com/");
+        driver.findElement(By.id("user-name")).sendKeys("problem_user");
+        driver.findElement(By.id("password")).sendKeys("secret_sauce");
+        driver.findElement(By.id("login-button")).click();
+        try {
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        driver.findElement(By.id("react-burger-menu-btn")).click();
+        try {
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        driver.findElement(By.id("inventory_sidebar_link")).click();
+    }
+
+    @Test
+    public void TS2SwagLabsTC13() {
+        ChromeDriver driver = new ChromeDriver();
+        driver.get("https://www.saucedemo.com/");
+        driver.findElement(By.id("user-name")).sendKeys("problem_user");
+        driver.findElement(By.id("password")).sendKeys("secret_sauce");
+        driver.findElement(By.id("login-button")).click();
+        try {
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        driver.findElement(By.id("add-to-cart-sauce-labs-backpack")).click();
+        driver.findElement(By.id("add-to-cart-sauce-labs-bike-light")).click();
+        driver.findElement(By.id("add-to-cart-sauce-labs-bolt-t-shirt")).click();
+        driver.findElement(By.id("add-to-cart-sauce-labs-fleece-jacket")).click();
+        driver.findElement(By.id("add-to-cart-sauce-labs-onesie")).click();
+        driver.findElement(By.id("add-to-cart-test.allthethings()-t-shirt-(red)")).click();
+
+        WebElement cartButton = driver.findElement(By.xpath("/html/body/div/div/div/div[1]/div[1]/div[3]"));
+        cartButton.click();
+
+        driver.findElement(By.id("remove-sauce-labs-backpack")).click();
+        driver.findElement(By.id("remove-sauce-labs-bike-light")).click();
+        driver.findElement(By.id("remove-sauce-labs-bolt-t-shirt")).click();
+        driver.findElement(By.id("remove-sauce-labs-fleece-jacket")).click();
+        driver.findElement(By.id("remove-sauce-labs-onesie")).click();
+        driver.findElement(By.id("remove-test.allthethings()-t-shirt-(red)")).click();
+        driver.findElement(By.id("continue-shopping")).click();
+    }
 
 //_globalDriver.switchTo().frame("fancybox-frame");
 //_globalDriver.findElement(By.id("cbCheckAll")).click();
